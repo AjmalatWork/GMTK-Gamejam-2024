@@ -36,4 +36,14 @@ public class InputManager : MonoBehaviour
     {
         return Input.GetButtonUp("Jump");
     }
+
+    public bool GetExtendArmInputDown()
+    {
+        return Input.GetButtonDown("Extend");
+    }
+
+    public bool GetExtendArmInputUp()
+    {
+        return Input.GetButtonUp("Extend");
+    }
 }

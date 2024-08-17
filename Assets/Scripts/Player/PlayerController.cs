@@ -5,6 +5,7 @@ public class PlayerController : MonoBehaviour
     private PlayerMovement movement;
     private PlayerJump jump;
     private WallJump wallJump;
+    [SerializeField] private ExtendArm extendArm;
 
     void Start()
     {
@@ -23,5 +24,6 @@ public class PlayerController : MonoBehaviour
         movement.HandleMovement();
         jump.HandleJump();
         wallJump.HandleWallJump();
+        extendArm.HandleExtendArm();
     }
 }
