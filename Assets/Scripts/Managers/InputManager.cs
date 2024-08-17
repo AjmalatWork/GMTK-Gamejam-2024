@@ -36,9 +36,4 @@ public class InputManager : MonoBehaviour
     {
         return Input.GetButtonUp("Jump");
     }
-
-    public bool GetDashInput()
-    {
-        return Input.GetButtonDown("Dash");
-    }
 }

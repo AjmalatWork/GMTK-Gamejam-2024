@@ -202,7 +202,6 @@ GameObject:
   - component: {fileID: 3644200287361098573}
   - component: {fileID: 2580351919418662573}
   - component: {fileID: 7215538894563293991}
-  - component: {fileID: 8709965113877446040}
   - component: {fileID: 6599443877872389099}
   - component: {fileID: 3401857063262610426}
   - component: {fileID: 6661701040752062267}
@@ -371,21 +370,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01e5fc304430f71459ca56332038d9a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &8709965113877446040
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8809852334032527528}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f2db0dd0182255141b599fbac58cd4d0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  dashTime: 0.15
-  dashSpeed: 50
-  dashCooldown: 0.5
 --- !u!114 &6599443877872389099
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -605,8 +589,6 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 512
   cornerJumpCheckDistance: 0.2
-  cornerDashCheckDistance: 0.45
   verticalRayDistance: 1
   horizontalRayDistance: 1
   cornerJumpOffset: 0.01
-  cornerDashOffset: 0.1

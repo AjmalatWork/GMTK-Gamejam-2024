@@ -41,14 +41,12 @@ public class PlayerJump : MonoBehaviour
     private Vector2 velocity;
     private Rigidbody2D rb;
     private GroundCheck groundCheck;
-    private PlayerDash dash;
     private WallJump wallJump;
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         groundCheck = GetComponent<GroundCheck>();
-        dash = GetComponent<PlayerDash>();
         wallJump = GetComponent<WallJump>();
         groundGravity = -2f * maxJumpHeight / (timeToMaxHeight * timeToMaxHeight);
     }
@@ -85,13 +83,13 @@ public class PlayerJump : MonoBehaviour
 
     private void HandleInput()
     {
-        if (InputManager.Instance.GetJumpInputDown() && !dash.isDashing && InputManager.Instance.GetVerticalInput() >= 0f)
+        if (InputManager.Instance.GetJumpInputDown() && InputManager.Instance.GetVerticalInput() >= 0f)
         {
             jumpRequest = true;
             jumpPressed = true;
         }
 
-        if (InputManager.Instance.GetJumpInputUp() && !dash.isDashing)
+        if (InputManager.Instance.GetJumpInputUp())
         {
             jumpPressed = false;
         }
@@ -99,13 +97,6 @@ public class PlayerJump : MonoBehaviour
 
     private void SetGravityScale()
     {
-        // If player is dashing, deactivate gravity
-        if (dash.isDashing)
-        {
-            gravityMultiplier = 0f;
-            return;
-        }
-
         rb.gravityScale = (groundGravity / Physics2D.gravity.y) * gravityMultiplier;
     }
 
@@ -180,12 +171,6 @@ public class PlayerJump : MonoBehaviour
 
     private void CalculateGravity()
     {
-        if(dash.isDashing)
-        {
-            gravityMultiplier = defaultGravityScale;
-            return;
-        }
-
         if (wallJump.isWallSliding)
         {
             gravityMultiplier = downGravityModifier;

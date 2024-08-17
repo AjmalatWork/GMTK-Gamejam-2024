@@ -6,19 +6,17 @@ public class PlayerMovement : MonoBehaviour
 
     private float moveInput;
     private Rigidbody2D rb;
-    private PlayerDash dash;
     private WallJump wallJump;
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        dash = GetComponent<PlayerDash>();
         wallJump = GetComponent<WallJump>();
     }
 
     public void HandleMovement()
     {
-        if(!dash.isDashing && !wallJump.isWallJumping)
+        if(!wallJump.isWallJumping)
         {
             moveInput = InputManager.Instance.GetHorizontalInput();
             float targetSpeed = moveSpeed * moveInput;
