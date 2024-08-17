@@ -10,8 +10,10 @@ public class ExtendArm : MonoBehaviour
     [SerializeField] private Rigidbody2D playerRB;
 
     public bool isArmAttached;
-    private bool extendPressed;
+    public bool extendPressed;
     private bool extendStarted;
+    private FallingLedge fallingLedge;
+    private RaycastHit2D hit;
 
     void Start()
     {
@@ -42,7 +44,13 @@ public class ExtendArm : MonoBehaviour
         else if(extendStarted)
         {
             RetractArm();
-        }        
+        }  
+        
+        if(isArmAttached && fallingLedge != null)
+        {
+            distanceJoint.connectedAnchor = new Vector2(hit.point.x,fallingLedge.transform.position.y);
+            lineRenderer.SetPosition(1, new Vector2(hit.point.x, fallingLedge.transform.position.y));
+        }
     }
 
     void ExtendOneArm()
@@ -60,37 +68,32 @@ public class ExtendArm : MonoBehaviour
         Vector3 direction = (mouseWorldPosition - ArmOrigin.transform.position).normalized;
 
         //Vector2 direction = (Vector2.up + Vector2.right * playerRB.transform.localScale.x).normalized; // 45-degree angle
-        RaycastHit2D hit = Physics2D.Raycast(ArmOrigin.transform.position, direction, maxArmLength, grabbableLayer);
+        hit = Physics2D.Raycast(ArmOrigin.transform.position, direction, maxArmLength, grabbableLayer);
         if (hit.collider != null)
         {            
-            AttachArm(hit.point);
+            AttachArm(hit);
         }
     }
 
-    void AttachArm(Vector2 hitPoint)
+    void AttachArm(RaycastHit2D hit)
     {
         isArmAttached = true;
 
-        distanceJoint.connectedAnchor = hitPoint;
-        distanceJoint.distance = Vector2.Distance(hitPoint, ArmOrigin.transform.position);
+        distanceJoint.connectedAnchor = hit.point;
+        distanceJoint.distance = Vector2.Distance(hit.point, ArmOrigin.transform.position);
         distanceJoint.enabled = true;        
 
         // Enable the line renderer to visualize the arm
         lineRenderer.SetPosition(0, ArmOrigin.transform.position);
-        lineRenderer.SetPosition(1, hitPoint);
+        lineRenderer.SetPosition(1, hit.point);
         lineRenderer.enabled = true;
 
-        SetSwingParameters();
-    }
-
-    void SetSwingParameters()
-    {
-        playerRB.AddForce(new Vector2(10.0f, 0.0f), ForceMode2D.Force);
-    }
-
-    void ResetSwingParameters()
-    {
-
+        // Is this a falling ledge?
+        fallingLedge = hit.collider.gameObject.GetComponentInParent<FallingLedge>();
+        if (fallingLedge != null)
+        {
+            fallingLedge.GrabLedge();
+        }
     }
 
     void RetractArm()
