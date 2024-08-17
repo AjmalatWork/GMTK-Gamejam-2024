@@ -7,6 +7,8 @@ public class PlayerController : MonoBehaviour
     private WallJump wallJump;
     [SerializeField] private ExtendArm extendArm;
 
+    private int power;
+
     void Start()
     {
         movement = GetComponent<PlayerMovement>();
