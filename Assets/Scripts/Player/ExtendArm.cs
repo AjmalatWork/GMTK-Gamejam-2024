@@ -55,7 +55,11 @@ public class ExtendArm : MonoBehaviour
 
         extendStarted = true;
 
-        Vector2 direction = (Vector2.up + Vector2.right * playerRB.transform.localScale.x).normalized; // 45-degree angle
+        Vector3 mouseWorldPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        mouseWorldPosition.z = transform.position.z;
+        Vector3 direction = (mouseWorldPosition - ArmOrigin.transform.position).normalized;
+
+        //Vector2 direction = (Vector2.up + Vector2.right * playerRB.transform.localScale.x).normalized; // 45-degree angle
         RaycastHit2D hit = Physics2D.Raycast(ArmOrigin.transform.position, direction, maxArmLength, grabbableLayer);
         if (hit.collider != null)
         {            
