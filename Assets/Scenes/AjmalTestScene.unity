@@ -756,6 +756,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3401857063262610426, guid: d0c12da2b7b521d45a65373cdc744e30, type: 3}
+      propertyPath: swingSpeedMultiplier
+      value: 2.5
+      objectReference: {fileID: 0}
     - target: {fileID: 7215538894563293991, guid: d0c12da2b7b521d45a65373cdc744e30, type: 3}
       propertyPath: extendArm
       value: 

@@ -3,15 +3,18 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     public float moveSpeed;
+    public float swingSpeedMultiplier;
 
     private float moveInput;
     private Rigidbody2D rb;
     private WallJump wallJump;
+    private ExtendArm arm;
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         wallJump = GetComponent<WallJump>();
+        arm = GetComponentInChildren<ExtendArm>();
     }
 
     public void HandleMovement()
@@ -20,6 +23,12 @@ public class PlayerMovement : MonoBehaviour
         {
             moveInput = InputManager.Instance.GetHorizontalInput();
             float targetSpeed = moveSpeed * moveInput;
+
+            if(arm.isArmAttached)
+            {
+                targetSpeed = targetSpeed * swingSpeedMultiplier;
+            }
+
             rb.velocity = new Vector2(targetSpeed, rb.velocity.y);
 
             TurnPlayer();            
