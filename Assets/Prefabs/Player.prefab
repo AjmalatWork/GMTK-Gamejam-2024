@@ -568,7 +568,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   extendArm: {fileID: 1799963084756728490}
-  respawnDelay: 2
+  respawnDelay: 1
 --- !u!114 &6599443877872389099
 MonoBehaviour:
   m_ObjectHideFlags: 0
