@@ -5,6 +5,7 @@ public class ExtendArm : MonoBehaviour
 {
     public float maxArmLength;
     [SerializeField] private LayerMask grabbableLayer;
+    [SerializeField] private LayerMask groundLayer;
     [SerializeField] private GameObject ArmOrigin;
     [SerializeField] private DistanceJoint2D distanceJoint;
     [SerializeField] private LineRenderer lineRenderer;
@@ -87,10 +88,14 @@ public class ExtendArm : MonoBehaviour
         Vector3 direction = (mouseWorldPosition - ArmOrigin.transform.position).normalized;
 
         //Vector2 direction = (Vector2.up + Vector2.right * playerRB.transform.localScale.x).normalized; // 45-degree angle
-        hit = Physics2D.Raycast(ArmOrigin.transform.position, direction, maxArmLength, grabbableLayer);
+        hit = Physics2D.Raycast(ArmOrigin.transform.position, direction, maxArmLength, grabbableLayer | groundLayer);
         if (hit.collider != null)
-        {            
-            AttachArm(hit);
+        {
+            // Check if the first hit is grabbable
+            if (((1 << hit.collider.gameObject.layer) & grabbableLayer) != 0)
+            {
+                AttachArm(hit);
+            }
         }
     }
 
@@ -138,11 +143,15 @@ public class ExtendArm : MonoBehaviour
         Vector3 mouseWorldPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         mouseWorldPosition.z = transform.position.z;
         Vector3 direction = (mouseWorldPosition - ArmOrigin.transform.position).normalized;
-        RaycastHit2D hit = Physics2D.Raycast(ArmOrigin.transform.position, direction, maxArmLength, grabbableLayer);
+        RaycastHit2D hit = Physics2D.Raycast(ArmOrigin.transform.position, direction, maxArmLength, grabbableLayer | groundLayer);
         if (hit.collider != null)
         {
-            reticle.transform.position = hit.point;
-            reticle.SetActive(true);
+            // Check if the first hit is grabbable
+            if (((1 << hit.collider.gameObject.layer) & grabbableLayer) != 0)
+            {
+                reticle.transform.position = hit.point;
+                reticle.SetActive(true);
+            }            
         }
         else
         {
