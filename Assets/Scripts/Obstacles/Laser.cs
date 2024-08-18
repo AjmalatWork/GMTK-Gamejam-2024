@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class Laser : MonoBehaviour
@@ -6,6 +7,10 @@ public class Laser : MonoBehaviour
     public Transform laserStartPoint;
     public Vector2 laserDirection;
     public bool isLaserOn = true;
+    public enum LaserMode { Button, Timed }
+    public LaserMode mode;
+
+    public float laserSwitchTimer = 2f;
 
     LineRenderer lineRenderer;
     BoxCollider2D laserCollider;
@@ -20,10 +25,15 @@ public class Laser : MonoBehaviour
         int allLayers = ~0;
         int excludedLayers = allLayers & ~(1 << 6) & ~(1 << gameObject.layer);
         ignoreLayer = excludedLayers;
+
+        if (mode == LaserMode.Timed)
+        {
+            InvokeRepeating(nameof(InvokeSwitch), laserSwitchTimer, laserSwitchTimer);
+        }
     }
 
     void Update()
-    {
+    {       
         if (isLaserOn)
         {
             ShootLaser(laserStartPoint.position, laserDirection);
@@ -71,5 +81,10 @@ public class Laser : MonoBehaviour
         lineRenderer.enabled = switchLaser;
         laserCollider.enabled = switchLaser;
         isLaserOn = switchLaser;
+    }
+
+    void InvokeSwitch()
+    {
+        SwitchLaser(!isLaserOn);
     }
 }
