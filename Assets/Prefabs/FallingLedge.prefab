@@ -74,8 +74,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f2d4ec227c77f914bb188be3d52eee6a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fallDelay: 2
-  fallingTime: 2
+  fallDelay: 0.5
+  fallingTime: 0.5
   resetDelay: 1
   maxVelocity: 10
   arm: {fileID: 0}
