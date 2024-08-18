@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Ground
   - Laser
+  - Spike
+  - Debris
   layers:
   - Default
   - TransparentFX
