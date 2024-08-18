@@ -1168,10 +1168,6 @@ PrefabInstance:
       value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 7215538894563293991, guid: d0c12da2b7b521d45a65373cdc744e30, type: 3}
-      propertyPath: extendArm
-      value: 
-      objectReference: {fileID: 2040573199}
-    - target: {fileID: 7215538894563293991, guid: d0c12da2b7b521d45a65373cdc744e30, type: 3}
       propertyPath: changeSize
       value: 
       objectReference: {fileID: 1497671166}

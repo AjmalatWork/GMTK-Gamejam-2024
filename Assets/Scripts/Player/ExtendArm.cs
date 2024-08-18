@@ -3,7 +3,7 @@ using UnityEngine.Rendering.Universal;
 
 public class ExtendArm : MonoBehaviour
 {
-    [SerializeField] private float maxArmLength;
+    public float maxArmLength;
     [SerializeField] private LayerMask grabbableLayer;
     [SerializeField] private GameObject ArmOrigin;
     [SerializeField] private DistanceJoint2D distanceJoint;

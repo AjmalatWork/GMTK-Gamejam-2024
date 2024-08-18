@@ -651,8 +651,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01e5fc304430f71459ca56332038d9a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  extendArm: {fileID: 0}
-  changeSize: {fileID: 0}
+  extendArm: {fileID: 1799963084756728490}
   respawnDelay: 2
 --- !u!114 &6599443877872389099
 MonoBehaviour:
@@ -777,6 +776,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sizeScale: 5
+  speedMultilpier: 2
+  jumpMultiplier: 2
+  handReachMultiplier: 2
+  arm: {fileID: 1799963084756728490}
 --- !u!232 &3428814449566455129
 DistanceJoint2D:
   m_ObjectHideFlags: 0

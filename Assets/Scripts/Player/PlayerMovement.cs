@@ -19,7 +19,7 @@ public class PlayerMovement : MonoBehaviour
 
     public void HandleMovement()
     {
-        if(!wallJump.isWallJumping)
+        if(!wallJump.isWallJumping && !arm.isArmAttached)
         {
             moveInput = InputManager.Instance.GetHorizontalInput();
             float targetSpeed = moveSpeed * moveInput;
