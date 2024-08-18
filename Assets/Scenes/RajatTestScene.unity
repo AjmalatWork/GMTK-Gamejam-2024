@@ -2233,6 +2233,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1799963084756728490, guid: d0c12da2b7b521d45a65373cdc744e30, type: 3}
+      propertyPath: reticle
+      value: 
+      objectReference: {fileID: 1432718353}
+    - target: {fileID: 1799963084756728490, guid: d0c12da2b7b521d45a65373cdc744e30, type: 3}
+      propertyPath: speedBoostMultiplier
+      value: 15
+      objectReference: {fileID: 0}
     - target: {fileID: 7215538894563293991, guid: d0c12da2b7b521d45a65373cdc744e30, type: 3}
       propertyPath: extendArm
       value: 
@@ -2665,6 +2673,11 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 2639624843379021474, guid: 64cb22793f2b63b4ca49b17279c418f8, type: 3}
   m_PrefabInstance: {fileID: 1427067169}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1432718353 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5440800101096877053, guid: d0c12da2b7b521d45a65373cdc744e30, type: 3}
+  m_PrefabInstance: {fileID: 1165349073}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1457185357
 PrefabInstance:
