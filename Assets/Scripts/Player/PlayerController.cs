@@ -7,8 +7,6 @@ public class PlayerController : MonoBehaviour
     private WallJump wallJump;
     [SerializeField] private ExtendArm extendArm;
 
-    private int power;
-
     void Start()
     {
         movement = GetComponent<PlayerMovement>();
@@ -27,5 +25,16 @@ public class PlayerController : MonoBehaviour
         jump.HandleJump();
         wallJump.HandleWallJump();
         extendArm.HandleExtendArm();
+    }
+
+    public void Die()
+    {
+        // Logic for player death, e.g., disable movement, play death animation
+        Respawn();
+    }
+
+    private void Respawn()
+    {
+        RespawnManager.Instance.RespawnPlayer(gameObject);        
     }
 }

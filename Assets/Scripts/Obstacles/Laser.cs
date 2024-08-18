@@ -71,8 +71,8 @@ public class Laser : MonoBehaviour
         // When the player touches the laser, you lose!
         if (collision.gameObject.CompareTag("Player"))
         {
-            Debug.Log("Restart!");
-            Time.timeScale = 0f;
+            PlayerController playerController = collision.gameObject.GetComponent<PlayerController>();
+            playerController.Die();
         }
     }
 
