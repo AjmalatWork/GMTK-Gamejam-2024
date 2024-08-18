@@ -50,7 +50,11 @@ public class LaserButton : MonoBehaviour
 
         StartCoroutine(ButtonPressCoroutine());
 
-        laser.SwitchLaser(!laser.isLaserOn);
+        if(laser.mode == Laser.LaserMode.Button)
+        {
+            laser.SwitchLaser(!laser.isLaserOn);
+        }
+        
     }
 
     private IEnumerator ButtonPressCoroutine()
