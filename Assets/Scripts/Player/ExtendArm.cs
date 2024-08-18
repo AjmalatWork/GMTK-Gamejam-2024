@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Rendering.Universal;
 
 public class ExtendArm : MonoBehaviour
 {
@@ -8,12 +9,16 @@ public class ExtendArm : MonoBehaviour
     [SerializeField] private DistanceJoint2D distanceJoint;
     [SerializeField] private LineRenderer lineRenderer;
     [SerializeField] private Rigidbody2D playerRB;
+    [SerializeField] private float speedBoostMultiplier;
+    [SerializeField] private GameObject reticle;
 
     public bool isArmAttached;
     public bool extendPressed;
+
     private bool extendStarted;
     private FallingLedge fallingLedge;
     private RaycastHit2D hit;
+    private Vector2 lastVelocity;
 
     void Start()
     {
@@ -23,6 +28,8 @@ public class ExtendArm : MonoBehaviour
 
         lineRenderer.positionCount = 2;
         lineRenderer.enabled = false;
+
+        reticle.SetActive(false);
     }
 
     public void HandleExtendArm()
@@ -35,6 +42,10 @@ public class ExtendArm : MonoBehaviour
         if (InputManager.Instance.GetExtendArmInputUp())
         {
             extendPressed = false;
+            if (isArmAttached)
+            {
+                ApplySpeedBoost();
+            }
         }
 
         if (extendPressed)
@@ -51,6 +62,14 @@ public class ExtendArm : MonoBehaviour
             distanceJoint.connectedAnchor = new Vector2(hit.point.x,fallingLedge.transform.position.y);
             lineRenderer.SetPosition(1, new Vector2(hit.point.x, fallingLedge.transform.position.y));
         }
+
+        if (isArmAttached)
+        {
+            // Track the player's velocity while swinging
+            lastVelocity = playerRB.velocity;
+        }
+
+        UpdateReticle();
     }
 
     void ExtendOneArm()
@@ -94,6 +113,8 @@ public class ExtendArm : MonoBehaviour
         {
             fallingLedge.GrabLedge();
         }
+
+        reticle.SetActive(false);
     }
 
     void RetractArm()
@@ -103,4 +124,30 @@ public class ExtendArm : MonoBehaviour
         extendStarted = false;
         isArmAttached = false;
     }
+
+    void ApplySpeedBoost()
+    {
+        // Apply a speed boost in the direction the player was moving
+        Vector2 boostDirection = lastVelocity.normalized;
+        Debug.Log("Boosted");
+        playerRB.velocity += boostDirection * speedBoostMultiplier;
+    }
+
+    void UpdateReticle()
+    {
+        Vector3 mouseWorldPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        mouseWorldPosition.z = transform.position.z;
+        Vector3 direction = (mouseWorldPosition - ArmOrigin.transform.position).normalized;
+        RaycastHit2D hit = Physics2D.Raycast(ArmOrigin.transform.position, direction, maxArmLength, grabbableLayer);
+        if (hit.collider != null)
+        {
+            reticle.transform.position = hit.point;
+            reticle.SetActive(true);
+        }
+        else
+        {
+            reticle.SetActive(false); // Hide the reticle if no valid target is hit
+        }
+    }
+
 }

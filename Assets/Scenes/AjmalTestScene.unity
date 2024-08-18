@@ -468,7 +468,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2639624843379021474, guid: 64cb22793f2b63b4ca49b17279c418f8, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -13.5
+      value: -7.84
       objectReference: {fileID: 0}
     - target: {fileID: 2639624843379021474, guid: 64cb22793f2b63b4ca49b17279c418f8, type: 3}
       propertyPath: m_LocalPosition.z
@@ -643,6 +643,11 @@ Transform:
   - {fileID: 337410538}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1289554971 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5440800101096877053, guid: d0c12da2b7b521d45a65373cdc744e30, type: 3}
+  m_PrefabInstance: {fileID: 165998034995136400}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1368114205
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -778,6 +783,14 @@ PrefabInstance:
     - target: {fileID: 177615517265212230, guid: d0c12da2b7b521d45a65373cdc744e30, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1799963084756728490, guid: d0c12da2b7b521d45a65373cdc744e30, type: 3}
+      propertyPath: reticle
+      value: 
+      objectReference: {fileID: 1289554971}
+    - target: {fileID: 1799963084756728490, guid: d0c12da2b7b521d45a65373cdc744e30, type: 3}
+      propertyPath: speedBoostMultiplier
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 7215538894563293991, guid: d0c12da2b7b521d45a65373cdc744e30, type: 3}
       propertyPath: extendArm
@@ -929,7 +942,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2639624843379021474, guid: 64cb22793f2b63b4ca49b17279c418f8, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -11.957618
+      value: -7.48
       objectReference: {fileID: 0}
     - target: {fileID: 2639624843379021474, guid: 64cb22793f2b63b4ca49b17279c418f8, type: 3}
       propertyPath: m_LocalPosition.z
