@@ -176,8 +176,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fallDelay: 0
   resetDelay: 1
-  maxVelocity: 10
-  verticalRayDistance: 30
+  maxVelocity: 20
+  verticalRayDistance: 50
   hitLayer:
     serializedVersion: 2
     m_Bits: 256

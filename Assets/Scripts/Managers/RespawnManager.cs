@@ -38,6 +38,7 @@ public class RespawnManager : MonoBehaviour
         if (activeRespawnPoint != null)
         {
             player.transform.position = activeRespawnPoint.transform.position;
+            player.transform.rotation = activeRespawnPoint.transform.rotation;
         }
         else
         {
