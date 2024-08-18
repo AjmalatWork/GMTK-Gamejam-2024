@@ -487,6 +487,7 @@ GameObject:
   - component: {fileID: 2613164638807822373}
   - component: {fileID: 847911661293706188}
   - component: {fileID: 75767573743853}
+  - component: {fileID: 7773617472858275566}
   - component: {fileID: 3428814449566455129}
   m_Layer: 8
   m_Name: Player
@@ -651,6 +652,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   extendArm: {fileID: 0}
+  changeSize: {fileID: 0}
+  respawnDelay: 2
 --- !u!114 &6599443877872389099
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -761,6 +764,19 @@ MonoBehaviour:
   verticalRayDistance: 1
   horizontalRayDistance: 1
   cornerJumpOffset: 0.01
+--- !u!114 &7773617472858275566
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8809852334032527528}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 37eccbf5ed51b2e4694d9e3d735e602b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sizeScale: 5
 --- !u!232 &3428814449566455129
 DistanceJoint2D:
   m_ObjectHideFlags: 0
@@ -768,7 +784,7 @@ DistanceJoint2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8809852334032527528}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 4
   m_EnableCollision: 1
   m_ConnectedRigidBody: {fileID: 0}

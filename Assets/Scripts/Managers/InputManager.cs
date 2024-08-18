@@ -46,4 +46,9 @@ public class InputManager : MonoBehaviour
     {
         return Input.GetButtonUp("Extend");
     }
+
+    public bool GetPowerInputDown()
+    {
+        return Input.GetButtonDown("Power");
+    }
 }
