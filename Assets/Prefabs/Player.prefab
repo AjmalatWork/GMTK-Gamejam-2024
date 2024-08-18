@@ -855,7 +855,7 @@ MonoBehaviour:
   distanceJoint: {fileID: 3428814449566455129}
   lineRenderer: {fileID: 1762894607104860280}
   playerRB: {fileID: 3644200287361098573}
-  speedBoostMultiplier: 0
+  speedBoostMultiplier: 15
   reticle: {fileID: 0}
   isArmAttached: 0
   extendPressed: 0
