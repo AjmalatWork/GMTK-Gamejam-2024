@@ -9,7 +9,7 @@ public class Laser : MonoBehaviour
     public bool isLaserOn = true;
     public enum LaserMode { Button, Timed }
     public LaserMode mode;
-
+    public float startDelay = 0f;
     public float laserSwitchTimer = 2f;
 
     LineRenderer lineRenderer;
@@ -20,7 +20,7 @@ public class Laser : MonoBehaviour
     void Awake()
     {
         lineRenderer = GetComponent<LineRenderer>();
-        laserCollider = GetComponent<BoxCollider2D>();
+        laserCollider = GetComponent<BoxCollider2D>();        
 
         int allLayers = ~0;
         int excludedLayers = allLayers & ~(1 << 6) & ~(1 << gameObject.layer);
@@ -28,7 +28,9 @@ public class Laser : MonoBehaviour
 
         if (mode == LaserMode.Timed)
         {
-            InvokeRepeating(nameof(InvokeSwitch), laserSwitchTimer, laserSwitchTimer);
+            isLaserOn = false;
+            Invoke(nameof(InvokeSwitch), startDelay);
+            StartCoroutine(DelaySwitching());            
         }
     }
 
@@ -86,5 +88,11 @@ public class Laser : MonoBehaviour
     void InvokeSwitch()
     {
         SwitchLaser(!isLaserOn);
+    }
+
+    IEnumerator DelaySwitching()
+    {
+        yield return new WaitForSeconds(startDelay);
+        InvokeRepeating(nameof(InvokeSwitch), laserSwitchTimer, laserSwitchTimer);
     }
 }
