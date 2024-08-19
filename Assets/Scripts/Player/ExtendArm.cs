@@ -15,9 +15,9 @@ public class ExtendArm : MonoBehaviour
 
     public bool isArmAttached;
     public bool extendPressed;
+    [HideInInspector] public FallingLedge fallingLedge;
 
-    private bool extendStarted;
-    private FallingLedge fallingLedge;
+    private bool extendStarted;    
     private RaycastHit2D hit;
     private Vector2 lastVelocity;
 
