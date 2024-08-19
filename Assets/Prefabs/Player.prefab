@@ -568,7 +568,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   extendArm: {fileID: 1799963084756728490}
-  respawnDelay: 2
+  respawnDelay: 1
 --- !u!114 &6599443877872389099
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -766,6 +766,9 @@ MonoBehaviour:
   grabbableLayer:
     serializedVersion: 2
     m_Bits: 2048
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 512
   ArmOrigin: {fileID: 658478509625593044}
   distanceJoint: {fileID: 3428814449566455129}
   lineRenderer: {fileID: 1762894607104860280}

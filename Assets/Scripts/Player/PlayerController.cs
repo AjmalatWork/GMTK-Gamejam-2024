@@ -51,6 +51,8 @@ public class PlayerController : MonoBehaviour
     {
         isDead = false;
         rb.constraints = RigidbodyConstraints2D.None;
+        rb.constraints = RigidbodyConstraints2D.FreezeRotation;
+        transform.rotation = Quaternion.identity;
         RespawnManager.Instance.RespawnPlayer(gameObject);        
     }
 }
