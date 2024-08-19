@@ -18,6 +18,7 @@ public class WallJump : MonoBehaviour
 
     private Rigidbody2D rb;
     private GroundCheck groundCheck;
+    private Animator animator;
 
     private float moveInput;
     private float wallJumpDirection;
@@ -31,12 +32,17 @@ public class WallJump : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         groundCheck = GetComponent<GroundCheck>();
+        animator = GetComponent<Animator>();
     }
 
     public void HandleWallJump()
     {           
         GetCheckValues();
         HandleInput();
+
+        animator.SetBool("IsWallSliding", isWallSliding);
+        animator.SetBool("IsWallJumping", isWallJumping);
+        animator.SetBool("IsGrounded", isGrounded);
     }
 
     private void HandleInput()
