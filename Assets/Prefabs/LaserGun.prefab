@@ -209,7 +209,7 @@ MonoBehaviour:
   laserDirection: {x: 0, y: -1}
   isLaserOn: 1
   mode: 0
-  laserSwitchTimer: 2
+  laserSwitchTimer: 1
 --- !u!61 &8616225309271230755
 BoxCollider2D:
   m_ObjectHideFlags: 0
