@@ -43,6 +43,7 @@ public class PlayerController : MonoBehaviour
     {
         isDead = true;
         rb.constraints = RigidbodyConstraints2D.FreezePosition;
+        extendArm.isArmAttached = false;
         // Logic for player death, e.g., disable movement, play death animation
         Invoke(nameof(Respawn), respawnDelay);
     }

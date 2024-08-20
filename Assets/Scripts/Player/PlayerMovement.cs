@@ -43,7 +43,7 @@ public class PlayerMovement : MonoBehaviour
     {        
         // transform.localscale.x is used to get the direction the player is facing
         // Right means 1 and Left means -1
-        if ((transform.localScale.x == 1f && moveInput < 0) || (transform.localScale.x == -1f && moveInput > 0))
+        if ((transform.localScale.x > 0f && moveInput < 0) || (transform.localScale.x < 0f && moveInput > 0))
         {
             transform.localScale = new Vector3(transform.localScale.x * -1f, transform.localScale.y, transform.localScale.z);
         }
