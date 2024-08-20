@@ -42,7 +42,11 @@ public class FallingLedge : MonoBehaviour
     private void Reset()
     {
         gameObject.SetActive(false);
-        arm.extendPressed = false;
+
+        if(arm.fallingLedge != null)
+        {
+            arm.extendPressed = false;
+        }        
         rb.bodyType = RigidbodyType2D.Kinematic;
         transform.position = originalPosition;
         Invoke(nameof(Activate), resetDelay);

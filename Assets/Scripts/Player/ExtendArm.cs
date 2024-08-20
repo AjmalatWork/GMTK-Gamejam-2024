@@ -15,11 +15,12 @@ public class ExtendArm : MonoBehaviour
 
     public bool isArmAttached;
     public bool extendPressed;
+    [HideInInspector] public FallingLedge fallingLedge;
 
-    private bool extendStarted;
-    private FallingLedge fallingLedge;
+    private bool extendStarted;    
     private RaycastHit2D hit;
     private Vector2 lastVelocity;
+    private Animator animator;
 
     void Start()
     {
@@ -31,6 +32,8 @@ public class ExtendArm : MonoBehaviour
         lineRenderer.enabled = false;
 
         reticle.SetActive(false);
+
+        animator = GetComponentInParent<Animator>();
     }
 
     public void HandleExtendArm()
@@ -71,6 +74,8 @@ public class ExtendArm : MonoBehaviour
         }
 
         UpdateReticle();
+
+        animator.SetBool("IsSwinging", isArmAttached);
     }
 
     void ExtendOneArm()

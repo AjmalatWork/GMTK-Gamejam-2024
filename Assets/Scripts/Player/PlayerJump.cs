@@ -42,12 +42,15 @@ public class PlayerJump : MonoBehaviour
     private Rigidbody2D rb;
     private GroundCheck groundCheck;
     private WallJump wallJump;
+    private Animator animator;
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         groundCheck = GetComponent<GroundCheck>();
         wallJump = GetComponent<WallJump>();
+        animator = GetComponent<Animator>();
+
         groundGravity = -2f * maxJumpHeight / (timeToMaxHeight * timeToMaxHeight);
     }
 
@@ -57,6 +60,7 @@ public class PlayerJump : MonoBehaviour
         GetGroundCheck();        
         CacheJump();
         CoyoteTime();
+        animator.SetBool("IsJumping", currentlyJumping);
     }
 
     private void FixedUpdate()
@@ -138,7 +142,7 @@ public class PlayerJump : MonoBehaviour
         if (isGrounded || (coyoteTimeCounter > 0.03f && coyoteTimeCounter < coyoteTime))
         {
             jumpRequest = false;
-            currentlyJumping = true;
+            currentlyJumping = true;            
             jumpBufferCounter = 0;
             coyoteTimeCounter = 0;
 

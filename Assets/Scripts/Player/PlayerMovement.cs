@@ -9,12 +9,14 @@ public class PlayerMovement : MonoBehaviour
     private Rigidbody2D rb;
     private WallJump wallJump;
     private ExtendArm arm;
+    private Animator animator;
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         wallJump = GetComponent<WallJump>();
         arm = GetComponentInChildren<ExtendArm>();
+        animator = GetComponent<Animator>();
     }
 
     public void HandleMovement()
@@ -24,7 +26,9 @@ public class PlayerMovement : MonoBehaviour
             moveInput = InputManager.Instance.GetHorizontalInput();
             float targetSpeed = moveSpeed * moveInput;
 
-            if(arm.isArmAttached)
+            animator.SetFloat("Speed", Mathf.Abs(targetSpeed));
+
+            if (arm.isArmAttached)
             {
                 targetSpeed = targetSpeed * swingSpeedMultiplier;
             }
