@@ -139,7 +139,6 @@ public class ExtendArm : MonoBehaviour
     {
         // Apply a speed boost in the direction the player was moving
         Vector2 boostDirection = lastVelocity.normalized;
-        Debug.Log("Boosted");
         playerRB.velocity += boostDirection * speedBoostMultiplier;
     }
 

@@ -1,6 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using Unity.Burst.Intrinsics;
 using UnityEngine;
 
 public class FallingLedge : MonoBehaviour
@@ -36,14 +33,14 @@ public class FallingLedge : MonoBehaviour
     private void Fall()
     {
         rb.bodyType = RigidbodyType2D.Dynamic;
+        rb.mass = 10000;
         Invoke(nameof(Reset), fallingTime);
     }
 
     private void Reset()
     {
         gameObject.SetActive(false);
-
-        if(arm.fallingLedge != null)
+        if(arm.fallingLedge == this)
         {
             arm.extendPressed = false;
         }        

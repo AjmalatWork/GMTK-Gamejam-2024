@@ -8,6 +8,7 @@ public class PlayerController : MonoBehaviour
     private ChangeSize changeSize;
     private bool isDead = false;
     private Rigidbody2D rb;
+    private Vector3 originalPosition;
 
     [SerializeField] private ExtendArm extendArm;
     [SerializeField] private float respawnDelay = 2f;
@@ -20,6 +21,7 @@ public class PlayerController : MonoBehaviour
         wallJump    = GetComponent<WallJump>();
         changeSize  = GetComponent<ChangeSize>();
         rb          = GetComponent<Rigidbody2D>();
+        originalPosition = transform.position;
     }
 
     void Update()
@@ -36,7 +38,12 @@ public class PlayerController : MonoBehaviour
             wallJump.HandleWallJump();
             extendArm.HandleExtendArm();
             changeSize.HandleChangeSize();
-        }        
+        }
+
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            transform.position = originalPosition;
+        }
     }
 
     public void Die()
@@ -44,7 +51,6 @@ public class PlayerController : MonoBehaviour
         isDead = true;
         rb.constraints = RigidbodyConstraints2D.FreezePosition;
         extendArm.isArmAttached = false;
-        // Logic for player death, e.g., disable movement, play death animation
         Invoke(nameof(Respawn), respawnDelay);
     }
 
